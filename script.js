@@ -1,32 +1,28 @@
-const tabItems = document.querySelectorAll('.tab-item')
-const tabContentItems = document.querySelectorAll('.tab-content-item')
+const tabItems = document.querySelectorAll('.tab-item');
+const tabItemsContent = document.querySelectorAll('.tab-content-item')
 
 
-
-function selectItem(e) {
+function addBorder(e) {
     removeBorder();
     removeShow();
+    this.classList.add('tab-border')
 
-    // adds border to selected element
-    this.classList.add('tab-border');
-
-    // get the tab content from DOM
-    const tabToshow = document.querySelector(`#${this.id}-content`);
-    console.log(tabToshow);
-
-
+    const itemToShow = document.querySelector(`#${this.id}-content`)
+    itemToShow.classList.add('show');
 }
 
-// remove border from each tab el
+
+
+// this function removes border from all initially
 const removeBorder = () => {
     tabItems.forEach(item => item.classList.remove('tab-border'));
 }
+
+// this function removes show class from all initially
 const removeShow = () => {
-    tabContentItems.forEach(item => item.classList.remove('show'));
+    tabItemsContent.forEach(item => item.classList.remove('show'));
 }
 
 
 
-
-// Event listener for item clicked
-tabItems.forEach(item => item.addEventListener('click', selectItem))
+tabItems.forEach(item => item.addEventListener('click', addBorder))
